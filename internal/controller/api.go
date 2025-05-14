@@ -31,7 +31,7 @@ func (api ApiController) Inspect(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	response := response.Response{
+	response := response.ApiResponse{
 		Result: requests,
 	}
 

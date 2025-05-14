@@ -9,9 +9,9 @@ import (
 
 	"github.com/fitraditya/hook-web/internal/constant"
 	"github.com/fitraditya/hook-web/internal/model"
+	"github.com/fitraditya/hook-web/internal/response"
 	"github.com/fitraditya/hook-web/internal/schema"
 	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/render"
 	"github.com/r3labs/sse/v2"
 )
 
@@ -97,5 +97,10 @@ func (rec RecordController) Save(w http.ResponseWriter, r *http.Request) {
 		Data: data,
 	})
 
-	render.Status(r, http.StatusCreated)
+	response := response.RecordResponse{
+		Success: true,
+	}
+
+	res, _ := json.Marshal(response)
+	w.Write(res)
 }
